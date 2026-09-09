@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# duplicate source folder — public/image-frames/ is the copy actually served
+/image-frames

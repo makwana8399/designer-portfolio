@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  --muted: rgba(255, 255, 255, 0.45);
+  --dim: rgba(255, 255, 255, 0.25);
+  --surface: rgba(255, 255, 255, 0.04);
+  /* User-selectable accent — default "mono" is pure white. Changed live via
+     the settings panel's theme swatches (see SettingsContext). */
+  --accent: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --font-mono: var(--font-technical);
+  --font-display: var(--font-headline);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  position: relative;
+}
+
+p,
+li {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: justify;
+  text-align-last: left;
+}
+
+/* Mobile only — most body copy (including things that aren't <p> tags, like
+   the skill badges below) uses text-muted/text-dim (dimmed white) for
+   hierarchy, which reads as too low-contrast on a small screen. Targeting
+   the utility classes directly (not just the `p` selector above) catches
+   every element styled with them, regardless of tag — divs, spans, list
+   items. !important since these are classes with their own specificity a
+   plain element selector wouldn't otherwise beat. Scoped to below lg: so
+   desktop is completely untouched. */
+@media (max-width: 1023px) {
+  p,
+  .text-muted,
+  .text-dim {
+    color: var(--foreground) !important;
+  }
+
+  /* Exception for the individual project page: the actual body-copy
+     paragraphs (description/challenge/solution/contributions — the ones
+     styled text-muted) should read as gray against white headings, not
+     solid white like everywhere else. Scoped to specifically .text-muted
+     paragraphs, not every <p> in the page — the small eyebrow labels
+     (Project_Type, 01 // The Challenge, Key_Contributions, etc., styled
+     text-dim) and the plain-<p> "Next Project" title stay white, matching
+     everything else on the page that isn't body copy.
+     .case-study-page p.text-muted is more specific than the plain `p` /
+     `.text-muted` rules above, so it wins despite all three using
+     !important. */
+  .case-study-page p.text-muted {
+    color: rgba(255, 255, 255, 0.55) !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: #000000;
+}
+
+/* film-grain overlay, fixed to the viewport, sits above the WebGL bg */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* faint diagonal dot-grid texture behind content */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* horizontal scanline/glitch bands, used over the About photo */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.08) 0px,
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* utility: bracketed system-label style used across the UI */
+.label-tag::before {
+  content: "[";
+  color: var(--dim);
+}
+.label-tag::after {
+  content: "]";
+  color: var(--dim);
+}
+
+/* Full-viewport color-wash — recolors the monochrome portrait/grain/UI to
+   match the selected accent theme (mirrors the reference site's theme
+   switch, which tints the whole page, not just accent-styled elements). */
+.theme-wash {
+  background: var(--accent);
+  mix-blend-mode: color;
+}
+
+/* square-line grid behind all content — the cursor-reactive glow that
+   brightens nearby squares is layered on top via .grid-spotlight */
+.square-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* Follows the cursor with heavy easing (see GridField.tsx) so the glow reads
+   as slow, laggy drift rather than a snap-to-pointer highlight. */
+.grid-spotlight {
+  background: radial-gradient(
+    circle 220px at var(--cx, 50%) var(--cy, 50%),
+    rgba(255, 255, 255, 0.14),
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  transition: opacity 0.2s linear;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
 }

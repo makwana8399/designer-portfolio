@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#101312"/>
+  <rect x="0.5" y="0.5" width="1279" height="719" fill="none" stroke="#1f2422" stroke-width="1"/>
+  <text x="50%" y="48%" text-anchor="middle" font-family="ui-monospace, monospace" font-size="28" fill="#8a9290" letter-spacing="4">PROJECT_03</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" fill="#ff5a1f" letter-spacing="2">PLACEHOLDER IMAGE</text>
+</svg>
