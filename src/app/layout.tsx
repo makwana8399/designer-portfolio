@@ -7,6 +7,7 @@ import { Preloader } from "@/components/layout/Preloader";
 import { IdentityHeader } from "@/components/layout/IdentityHeader";
 import { ContactTimeBlock } from "@/components/layout/ContactTimeBlock";
 import { AboutMobileHeader } from "@/components/layout/AboutMobileHeader";
+import { ThemeWash } from "@/components/layout/ThemeWash";
 import { NavSwitcher } from "@/components/layout/NavSwitcher";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { GridField } from "@/components/layout/GridField";
@@ -54,7 +55,7 @@ export default function RootLayout({
           <Preloader />
           <SceneCanvas />
           <GridField />
-          <div aria-hidden className="theme-wash pointer-events-none fixed inset-0 z-20" />
+          <ThemeWash />
           <CursorTrail />
           <IdentityHeader />
           <StatusMarquee />

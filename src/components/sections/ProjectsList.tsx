@@ -172,7 +172,7 @@ export function ProjectsList() {
                 ))}
               </div>
               <p className="mb-6 text-sm leading-relaxed text-muted">{project.description}</p>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border">
+              <div className="relative aspect-[2.1/1] w-full overflow-hidden rounded-lg border border-border">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -235,7 +235,7 @@ export function ProjectsList() {
                 <p className="max-w-md text-xs leading-relaxed text-muted">{project.description}</p>
               </div>
 
-              <div className="relative hidden aspect-video w-28 overflow-hidden rounded border border-border sm:block">
+              <div className="relative hidden aspect-[2.1/1] w-56 overflow-hidden rounded border border-border sm:block">
                 <Image
                   src={project.image}
                   alt={project.title}

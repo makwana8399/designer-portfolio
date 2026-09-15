@@ -31,6 +31,14 @@ export interface ProjectMedia {
   src: string;
   alt: string;
   isPlaceholder?: boolean;
+  // Tall/portrait source (e.g. a printed invoice or phone screenshot) —
+  // rendered with a taller container and object-contain instead of the
+  // default wide object-cover crop, so nothing gets cut off.
+  portrait?: boolean;
+  // Skip this item in the Interactive Gallery marquee — for media (like a
+  // portrait shot) that reads fine standing alone in the Challenge/Solution
+  // slot but gets cropped illegibly at the gallery's wide aspect ratio.
+  excludeFromGallery?: boolean;
 }
 
 export interface Project {

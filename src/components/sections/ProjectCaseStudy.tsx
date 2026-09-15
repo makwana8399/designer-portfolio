@@ -209,15 +209,19 @@ export function ProjectCaseStudy({
           <h3 className="font-display mb-4 text-lg sm:text-xl">The Challenge</h3>
           <p className="text-sm leading-relaxed text-muted">{project.challenge}</p>
         </div>
-        <div className="relative aspect-video overflow-hidden rounded border border-border bg-surface">
+        <div
+          className={`relative overflow-hidden rounded border border-border bg-surface ${
+            project.media[0].portrait ? "aspect-[3/4]" : "aspect-[2.1/1]"
+          }`}
+        >
           <Image
-            src={(project.media[1] ?? project.media[0]).src}
-            alt={(project.media[1] ?? project.media[0]).alt}
+            src={project.media[0].src}
+            alt={project.media[0].alt}
             fill
-            unoptimized={(project.media[1] ?? project.media[0]).src.endsWith(".svg")}
-            className="object-cover"
+            unoptimized={project.media[0].src.endsWith(".svg")}
+            className={project.media[0].portrait ? "object-contain" : "object-cover"}
           />
-          {(project.media[1] ?? project.media[0]).isPlaceholder && (
+          {project.media[0].isPlaceholder && (
             <span className="absolute bottom-3 left-3 rounded border border-border-strong bg-black/70 px-2 py-1 text-[10px] uppercase tracking-[0.15em] text-dim">
               Demo Coming Soon
             </span>
@@ -234,10 +238,13 @@ export function ProjectCaseStudy({
         </p>
         <div className="overflow-hidden">
           <div className="animate-marquee flex w-max gap-6">
-            {[...project.media, ...project.media].map((item, i) => (
+            {(() => {
+              const galleryMedia = project.media.filter((item) => !item.excludeFromGallery);
+              return [...galleryMedia, ...galleryMedia];
+            })().map((item, i) => (
               <div
                 key={`${item.src}-${i}`}
-                className="relative aspect-video w-[22rem] shrink-0 overflow-hidden rounded border border-border bg-surface sm:w-[30rem] lg:w-[34rem]"
+                className="relative aspect-[2.1/1] w-[22rem] shrink-0 overflow-hidden rounded border border-border bg-surface sm:w-[30rem] lg:w-[34rem]"
               >
                 <Image
                   src={item.src}
@@ -264,15 +271,23 @@ export function ProjectCaseStudy({
           <h3 className="font-display mb-4 text-lg sm:text-xl">The Solution</h3>
           <p className="text-sm leading-relaxed text-muted">{project.solution}</p>
         </div>
-        <div className="relative aspect-video overflow-hidden rounded border border-border bg-surface">
+        <div
+          className={`relative mx-auto w-full overflow-hidden rounded border border-border bg-surface ${
+            (project.media[1] ?? project.media[0]).portrait
+              ? "aspect-[3/4] max-w-sm"
+              : "aspect-[2.1/1]"
+          }`}
+        >
           <Image
-            src={project.media[0].src}
-            alt={project.media[0].alt}
+            src={(project.media[1] ?? project.media[0]).src}
+            alt={(project.media[1] ?? project.media[0]).alt}
             fill
-            unoptimized={project.media[0].src.endsWith(".svg")}
-            className="object-cover"
+            unoptimized={(project.media[1] ?? project.media[0]).src.endsWith(".svg")}
+            className={
+              (project.media[1] ?? project.media[0]).portrait ? "object-contain p-3" : "object-cover"
+            }
           />
-          {project.media[0].isPlaceholder && (
+          {(project.media[1] ?? project.media[0]).isPlaceholder && (
             <span className="absolute bottom-3 left-3 rounded border border-border-strong bg-black/70 px-2 py-1 text-[10px] uppercase tracking-[0.15em] text-dim">
               Demo Coming Soon
             </span>

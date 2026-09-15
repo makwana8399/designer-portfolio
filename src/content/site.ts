@@ -60,14 +60,24 @@ export const socialLinks: SocialLink[] = [
 
 export const experience: ExperienceItem[] = [
   {
+    role: "Junior AI Automation Engineer",
+    company: "RohTreMedia",
+    location: "Remote",
+    start: "Jul 2026",
+    end: "Present",
+    highlights: [
+      "Built an IVR flow for the company's first outreach to US/Canada prospects — gathers requirements straight from the caller, then the moment the call ends, auto-sends the caller's number and full call transcript to the Sales team's inbox and a Telegram group chat for immediate follow-up.",
+      "Designed and deployed a fully autonomous content agent that scans 20 YouTube channels, filters football prediction/review content, and drafts complete articles (title, slug, URL, body) — with a self-evaluation loop that scores each draft against an SEO rubric and regenerates up to 2 revisions before auto-selecting the best-scoring version.",
+      "Extended the agent to auto-generate and host thumbnails (Cloudflare) and publish end-to-end with zero manual writing, running autonomously 24/7 with Telegram status alerts; lifted publishing efficiency 95%, cut writer time 5x, held ~90% published-detail accuracy under spot-check review.",
+    ],
+  },
+  {
     role: "AI Automation Engineer (Intern)",
     company: "RohTreMedia",
     location: "Remote",
     start: "Jan 2026",
     end: "Jul 2026",
     highlights: [
-      "Designed and deployed a fully autonomous content agent that scans 20 YouTube channels, filters football prediction/review content, and drafts complete articles (title, slug, URL, body) — with a self-evaluation loop that scores each draft against an SEO rubric and regenerates up to 2 revisions before auto-selecting the best-scoring version.",
-      "Extended the agent to auto-generate and host thumbnails (Cloudflare) and publish end-to-end with zero manual writing, running autonomously 24/7 with Telegram status alerts; lifted publishing efficiency 95%, cut writer time 5x, held ~90% published-detail accuracy under spot-check review.",
       "Built an LLM-powered WhatsApp lead-nurturing agent (Twilio + GPT-4o) that cut response time 90% and lifted response efficiency 80%, with a live dashboard syncing lead status from ad sources to Excel.",
       "Deployed an autonomous AI agent that queries employees for task status and updates a live dashboard, saving 1+ hr/day per manager and improving task management efficiency 70%.",
       "Automated WooCommerce product onboarding (image-parsing → auto-generated title/description/price) and built an n8n editorial workflow (draft → review → publish), cutting manual upload effort 85% and publishing time 90%.",
@@ -170,72 +180,121 @@ export const skillSectors: SkillSector[] = [
   },
 ];
 
+// Ordered by how strong/helpful each project is, best first — this drives
+// display order on the Projects page and the Next_Project chain on each
+// case-study page (which just walks this array, wrapping at the end).
 export const projects: Project[] = [
   {
-    id: "rag-chatbot-suite",
-    title: "RAG-Powered Chatbot Suite",
+    id: "dispatch-planning-warehouse-optimization",
+    title: "Dispatch Planning & Warehouse Optimization",
     description:
-      "Three production RAG applications — document Q&A, memory-augmented chatbot, and a policy-compliance bot — built with chunking, embedding generation, and context-injected prompting for hallucination-controlled responses over private corpora.",
-    image: "/images/projects/placeholder-1.svg",
-    tags: ["RAG Suite", "LangChain · FAISS"],
-    link: "https://github.com/patelmrunal", // TODO(user): link the specific RAG-APP / CHAT-BOT / policy-rag-bot repos if you want them separated out
+      "AI-powered MVP that takes a raw CSV of warehouse product data (weight, dimensions, fragility, priority, destination) and turns it into an optimized storage layout, full dispatch route plan, live cost breakdown, and real-time fleet tracking — all in one system. Ranked Top 5 of 850+ projects in Intel's AI for Manufacturing Program.",
+    image: "/images/projects/dispatch-1.png",
+    tags: ["Intel AI for Manufacturing — Top 5/850+", "Python · Streamlit · Optimization ML"],
+    link: "#", // TODO(user): add a public link/repo/demo if you have one
     year: "2025",
-    // TODO(user): confirm/replace this case-study metadata — invented to fill the template until you correct it
-    projectType: "RAG_APPLICATION_SUITE",
+    projectType: "AI_OPTIMIZATION_MVP",
     entryYear: "2025",
     targetPlatform: "WEB",
     primaryRole: "AI_ENGINEER",
-    technologies: ["Python", "LangChain", "FAISS", "ChromaDB", "OpenAI API", "FastAPI"],
-    colorPalette: ["#ffffff", "#22d3ee", "#0a0a0a"],
+    technologies: ["Python", "Streamlit", "Optimization Algorithms", "Plotly", "Route Optimization", "Pandas"],
+    colorPalette: ["#ffffff", "#60a5fa", "#0a0a0a"],
     contributions:
-      "Designed the chunking and embedding pipeline, built context-injected prompting to control hallucination over private document corpora, and shipped three separate RAG surfaces (document Q&A, memory-augmented chat, policy-compliance bot) from one shared retrieval core.",
-    // TODO(user): confirm/replace — invented placeholder copy for the Project Walkthrough section
+      "Designed and built the full MVP end to end as part of Intel's Digital Readiness Program internship: the CSV-driven product intake, the 2D/3D storage-optimization engine and constraint system, the dispatch route planner and cost-breakdown analytics, and the real-time dynamic optimization layer for simulating live inventory events. Represented and presented the system to Intel Global Leadership, the Asia-Pacific & Japan Director, GTU's Vice Chancellor, and other senior GTU/Intel representatives after it was ranked Top 5 of 850+ submissions nationally in Intel's AI for Manufacturing Program.",
     challenge:
-      "Private company documents live scattered across wikis, PDFs, and support tickets, and general-purpose LLMs either can't see that data or hallucinate confident-sounding answers when they don't have it. Teams needed to ask natural-language questions against their own corpus and get grounded, source-backed answers — without leaking unrelated internal data across the three different bot surfaces this had to serve.",
+      "Warehouses run this whole process by hand and in pieces: figuring out where a product should physically go based on its weight, size, and fragility; planning delivery routes and vehicle loads separately; and only tallying up the real cost after the fact. Nothing talks to anything else, so space gets wasted, routes are inefficient, and there's no single place to see the true cost of a day's operations. The brief was to build one AI system that could take raw product data and handle all of it — placement, dispatch, tracking, and cost — together.",
     solution:
-      "Built a shared retrieval core — chunking, embedding, and vector search over FAISS/ChromaDB — then layered three purpose-built surfaces on top: a document Q&A bot, a memory-augmented conversational assistant, and a policy-compliance checker. Context-injected prompting keeps every answer traceable back to its source chunk, cutting hallucinated responses to near zero across all three.",
+      "Built an AI-powered MVP where you upload a single CSV of warehouse product details — weight, length, width, height, fragility, destination, priority, dispatch date — and the system takes it from there. A storage-optimization engine suggests where each product should go, respecting configurable constraints like max weight, fragile-on-top, and priority-first, and visualizes the result as both a 2D top-down layout and a rotatable 3D warehouse view. A dispatch-planning engine then builds full delivery routes across the fleet, complete with per-route distance, duration, cost, and stop-by-stop breakdowns. A dynamic-optimization layer lets the system react in real time as goods are added or removed from stock. And an analytics layer rolls everything — performance history, cost breakdown by driver/fuel/operating cost, fleet utilization, route maps, and delivery-density heatmaps — into one dashboard. This MVP was ranked Top 5 of 850+ projects nationally in Intel's AI for Manufacturing Program, and I presented it to Intel Global Leadership, the Asia-Pacific & Japan Director, GTU's Vice Chancellor, and other senior GTU/Intel representatives.",
     media: [
-      { src: "/images/projects/rag-1.svg", alt: "RAG-Powered Chatbot Suite — chat interface", isPlaceholder: true },
-      { src: "/images/projects/rag-2.svg", alt: "RAG-Powered Chatbot Suite — retrieval pipeline", isPlaceholder: true },
-      { src: "/images/projects/rag-3.svg", alt: "RAG-Powered Chatbot Suite — admin dashboard", isPlaceholder: true },
-      { src: "/images/projects/rag-4.svg", alt: "RAG-Powered Chatbot Suite — mobile view", isPlaceholder: true },
-    ], // TODO(user): send real screenshots/GIF or short screen-recording of this running
+      { src: "/images/projects/dispatch-1.png", alt: "Dispatch Planning & Warehouse Optimization — CSV upload and storage constraints setup" },
+      { src: "/images/projects/dispatch-2.png", alt: "Dispatch Planning & Warehouse Optimization — optimized storage plan with 2D warehouse layout" },
+      { src: "/images/projects/dispatch-3.png", alt: "Dispatch Planning & Warehouse Optimization — main navigation across Storage, Dispatch, Dynamic Optimization, Analytics, and Settings tabs" },
+      { src: "/images/projects/dispatch-4.png", alt: "Dispatch Planning & Warehouse Optimization — interactive 3D warehouse storage visualization" },
+      { src: "/images/projects/dispatch-5.png", alt: "Dispatch Planning & Warehouse Optimization — dispatch planning summary with routes, distance, and total cost" },
+      { src: "/images/projects/dispatch-6.png", alt: "Dispatch Planning & Warehouse Optimization — route list with assigned vehicles and drivers" },
+      { src: "/images/projects/dispatch-7.png", alt: "Dispatch Planning & Warehouse Optimization — expanded route details with delivery stops" },
+      { src: "/images/projects/dispatch-8.png", alt: "Dispatch Planning & Warehouse Optimization — dynamic real-time optimization controls" },
+      { src: "/images/projects/dispatch-9.png", alt: "Dispatch Planning & Warehouse Optimization — live system state table and simulated inventory events" },
+      { src: "/images/projects/dispatch-10.png", alt: "Dispatch Planning & Warehouse Optimization — analytics performance metrics" },
+      { src: "/images/projects/dispatch-11.png", alt: "Dispatch Planning & Warehouse Optimization — cost analysis breakdown by driver, fuel, and operating cost" },
+      { src: "/images/projects/dispatch-12.png", alt: "Dispatch Planning & Warehouse Optimization — route efficiency metrics across the fleet" },
+      { src: "/images/projects/dispatch-13.png", alt: "Dispatch Planning & Warehouse Optimization — detailed per-route cost breakdown table" },
+      { src: "/images/projects/dispatch-14.png", alt: "Dispatch Planning & Warehouse Optimization — fleet analytics and vehicle utilization" },
+      { src: "/images/projects/dispatch-15.png", alt: "Dispatch Planning & Warehouse Optimization — dispatch routes plotted on a coordinate map" },
+      { src: "/images/projects/dispatch-16.png", alt: "Dispatch Planning & Warehouse Optimization — delivery density heatmap and fleet performance details" },
+    ],
   },
   {
-    id: "sentiment-analysis-api",
-    title: "Sentiment Analysis API",
+    id: "whatsapp-lead-qualification-bot",
+    title: "WhatsApp Lead Qualification Bot",
     description:
-      "Bidirectional LSTM trained to 85.3% validation accuracy on the IMDB 50K dataset, deployed as a RESTful FastAPI service (POST /predict, GET /health) with a live public Streamlit demo.",
-    image: "/images/projects/placeholder-2.svg",
-    tags: ["ML API", "PyTorch · FastAPI"],
-    link: "https://sentimentapi.streamlit.app",
-    year: "2025",
-    // TODO(user): confirm/replace this case-study metadata — invented to fill the template until you correct it
-    projectType: "ML_API_SERVICE",
-    entryYear: "2025",
-    targetPlatform: "WEB_API",
-    primaryRole: "ML_ENGINEER",
-    technologies: ["PyTorch", "FastAPI", "Bidirectional LSTM", "Streamlit"],
-    colorPalette: ["#ffffff", "#4ade80", "#0a0a0a"],
+      "An automated WhatsApp bot that picks up new leads straight from Meta (Facebook/Instagram) ad campaigns, opens with a policy-compliant template message, qualifies the lead over a natural 3–5 message conversation, and — only once the customer agrees — hands off to the sales team on Discord and Telegram with the full chat and number, while every conversation is logged to Supabase and manageable from a custom dashboard.",
+    image: "/images/projects/leadbot-1.png",
+    tags: ["Client Project", "n8n · WhatsApp API · Supabase"],
+    link: "#", // TODO(user): add a public link/repo/demo if you have one
+    year: "2026",
+    projectType: "WHATSAPP_LEAD_AUTOMATION",
+    entryYear: "2026",
+    targetPlatform: "WHATSAPP",
+    primaryRole: "AUTOMATION_ENGINEER",
+    technologies: ["n8n", "Twilio WhatsApp API", "FastAPI", "Supabase", "Google Sheets API", "Discord", "Telegram Bot API"],
+    colorPalette: ["#ffffff", "#25d366", "#0a0a0a"],
     contributions:
-      "Trained and tuned a bidirectional LSTM to 85.3% validation accuracy on the IMDB 50K dataset, then wrapped it as a RESTful FastAPI service with health-check and prediction endpoints, plus a public Streamlit demo for live testing.",
-    // TODO(user): confirm/replace — invented placeholder copy for the Project Walkthrough section
+      "Built the full pipeline end to end: the Meta Ads → Google Sheets → Twilio WhatsApp lead-intake automation, the FastAPI-backed AI conversation engine that qualifies each lead and tracks its phase, the instant Discord and Telegram sales-handoff notifications carrying the full chat transcript and phone number, the Supabase-backed conversation and lead-status storage, and the internal dashboard for browsing every chat, editing AI-generated summaries, and updating lead status.",
     challenge:
-      "Most sentiment-analysis demos stop at a notebook accuracy score and never become something another service can actually call. The goal was to take a trained model all the way to a real, documented, publicly reachable API — with health checks, predictable latency, and a way for non-technical reviewers to try it without writing a single line of code.",
+      "Meta and WhatsApp's messaging policy requires the very first message to a new ad lead to use a pre-approved template — you can't open with a free-form AI reply. Past that first message, the lead still needed to be qualified naturally (business type, location, whether they're already running ads, budget) without feeling scripted, and the moment a lead actually agreed to talk to a person, the sales team needed to be looped in immediately with full context — instead of leads sitting unrouted in an inbox somewhere.",
     solution:
-      "Trained a bidirectional LSTM to 85.3% validation accuracy on the IMDB 50K dataset, then wrapped it in a FastAPI service with POST /predict and GET /health endpoints, deployed behind versioned, documented routes. A companion Streamlit app gives anyone a live, no-code way to type text in and see the model's confidence in real time.",
+      "Built an n8n-orchestrated pipeline that watches the Meta Ads-connected Google Sheet for new leads and fires off the mandatory policy-compliant WhatsApp template as the opener via Twilio. From there, a FastAPI-backed AI agent takes over and qualifies the lead naturally across 3–5 exchanges — business, location, current ad status, budget — before asking if they'd like to be connected with a sales person. The moment a lead says yes, the bot instantly pushes a handoff notification — with the full chat history and phone number — to both Discord and Telegram, and logs everything (messages, lead phase, status, AI-generated summary) to Supabase. A companion dashboard lets anyone on the team browse every lead's conversation, review and edit the AI's summary, and update lead status (Interested / Qualified / Lost / Not Qualified) by hand.",
     media: [
-      { src: "/images/projects/sentiment-1.svg", alt: "Sentiment Analysis API — API docs (Swagger)", isPlaceholder: true },
-      { src: "/images/projects/sentiment-2.svg", alt: "Sentiment Analysis API — Streamlit demo", isPlaceholder: true },
-      { src: "/images/projects/sentiment-3.svg", alt: "Sentiment Analysis API — model metrics", isPlaceholder: true },
-    ], // TODO(user): send real screenshots/GIF or short screen-recording of this running
+      { src: "/images/projects/leadbot-1.png", alt: "WhatsApp Lead Qualification Bot — n8n lead-intake automation from Google Sheets to Twilio" },
+      { src: "/images/projects/leadbot-2.png", alt: "WhatsApp Lead Qualification Bot — internal dashboard with lead list, chat view, and AI summary" },
+      { src: "/images/projects/leadbot-3.png", alt: "WhatsApp Lead Qualification Bot — opening template message and qualifying conversation" },
+      { src: "/images/projects/leadbot-4.png", alt: "WhatsApp Lead Qualification Bot — conversation continuing through to sales handoff" },
+      { src: "/images/projects/leadbot-5.png", alt: "WhatsApp Lead Qualification Bot — n8n conversation engine with AI response, status tracking, and handoff routing" },
+    ],
+  },
+  {
+    id: "invoice-payment-system",
+    title: "Invoice & Payment Management System",
+    description:
+      "A fully mobile-responsive billing platform built for a client's electrical trading business — GST-compliant invoice generation, party/customer management, and full payment tracking (collected vs. outstanding), designed simple enough for their own non-technical staff to run without training.",
+    image: "/images/projects/invoice-1.png",
+    tags: ["Client Project", "Django · Python"],
+    link: "#", // TODO(user): add a public link/repo/demo if you have one
+    year: "2026",
+    // TODO(user): confirm/replace this case-study metadata — invented to fill the template until you correct it
+    projectType: "CLIENT_BILLING_SYSTEM",
+    entryYear: "2026",
+    targetPlatform: "WEB",
+    primaryRole: "FULL_STACK_ENGINEER",
+    technologies: ["Django", "Python", "PDF Generation", "GST Invoicing"],
+    colorPalette: ["#ffffff", "#3b82f6", "#0a0a0a"],
+    contributions:
+      "Designed and built the full invoicing and payment system end to end for the client: the dashboard with real-time invoiced/received/outstanding/tax totals, GST-compliant tax invoice generation with auto-numbering and line-item CGST/SGST calculation, party/customer management, full invoice history with filtering, and a payment-recording flow that can be tied to a specific invoice or logged as a general advance — all built mobile-first so the client's own team could use it on a phone or a desktop with zero onboarding.",
+    challenge:
+      "The client needed one system to manage every party they invoice, track exactly how much payment has been collected versus what's still outstanding, and generate proper GST invoices — without hiring anyone or training their team to use it. Their explicit first requirement was simplicity: it had to be completely clear on both mobile and desktop, since we didn't want to spend their time teaching them how to generate an invoice — they needed to be able to pick it up and use it themselves from day one.",
+    solution:
+      "Built a fully responsive invoicing and payment dashboard: live totals for total invoiced, total received, outstanding balance, and tax collected, a monthly invoiced-vs-received trend chart, and a top-parties-by-invoiced-amount breakdown. Invoices are generated with auto-numbering, per-line HSN/CGST/SGST calculation, and produce a clean, print-ready GST tax invoice PDF. A dedicated Payments section records collections against a specific invoice or as a general advance, and Party management keeps every customer's details in one place — all wrapped in a minimal, guided UI so the client's own non-technical staff can create and manage invoices independently, on any device.",
+    media: [
+      { src: "/images/projects/invoice-1.png", alt: "Invoice & Payment Management System — dashboard with invoiced, received, outstanding, and tax totals" },
+      {
+        src: "/images/projects/invoice-2.png",
+        alt: "Invoice & Payment Management System — generated GST-compliant tax invoice PDF",
+        portrait: true,
+        excludeFromGallery: true,
+      },
+      { src: "/images/projects/invoice-3.png", alt: "Invoice & Payment Management System — invoice history with filtering and status" },
+      { src: "/images/projects/invoice-4.png", alt: "Invoice & Payment Management System — create invoice form with line items and live totals" },
+      { src: "/images/projects/invoice-5.png", alt: "Invoice & Payment Management System — payments tracking page" },
+      { src: "/images/projects/invoice-6.png", alt: "Invoice & Payment Management System — record payment form" },
+    ],
   },
   {
     id: "autonomous-content-agent",
     title: "Autonomous Content Agent",
     description:
       "Fully autonomous pipeline that scans 20 YouTube channels, drafts SEO-scored articles with a self-evaluation and revision loop, auto-generates and hosts thumbnails, and publishes end-to-end with zero manual writing — running 24/7 with Telegram status alerts.",
-    image: "/images/projects/placeholder-3.svg",
+    image: "/images/projects/agent-dark-1.png",
     tags: ["Automation Agent", "n8n · GPT-4o"],
     link: "#", // TODO(user): internal/client project — add a public link or case-study writeup if you have one
     year: "2026",
@@ -254,12 +313,70 @@ export const projects: Project[] = [
     solution:
       "Built a fully autonomous n8n + GPT-4o pipeline that scans source channels, drafts SEO-scored articles, and runs a self-evaluation/revision loop (up to 2 automatic passes) before anything ships. Thumbnails are auto-generated and hosted, publishing happens end-to-end with zero manual writing, and the whole thing reports its own status over Telegram 24/7.",
     media: [
-      { src: "/images/projects/agent-1.svg", alt: "Autonomous Content Agent — pipeline overview", isPlaceholder: true },
-      { src: "/images/projects/agent-2.svg", alt: "Autonomous Content Agent — article draft", isPlaceholder: true },
-      { src: "/images/projects/agent-3.svg", alt: "Autonomous Content Agent — thumbnail generator", isPlaceholder: true },
-      { src: "/images/projects/agent-4.svg", alt: "Autonomous Content Agent — Telegram alerts", isPlaceholder: true },
-      { src: "/images/projects/agent-5.svg", alt: "Autonomous Content Agent — publishing dashboard", isPlaceholder: true },
+      { src: "/images/projects/agent-dark-1.png", alt: "Autonomous Content Agent — dashboard: pipeline stats, YouTube URL processor, manual run triggers" },
+      { src: "/images/projects/agent-dark-2.png", alt: "Autonomous Content Agent — generation report: two scored draft attempts, best one auto-selected" },
+      { src: "/images/projects/agent-dark-3.png", alt: "Autonomous Content Agent — session log of 100 generated articles with SEO score, tries, and word count" },
+      { src: "/images/projects/agent-dark-4.png", alt: "Autonomous Content Agent — full pipeline run log from thumbnail generation through save" },
+      { src: "/images/projects/agent-dark-5.png", alt: "Autonomous Content Agent — final generated article output" },
+    ],
+  },
+  {
+    id: "sentiment-analysis-api",
+    title: "Sentiment Analysis API",
+    description:
+      "Bidirectional LSTM trained to 85.3% validation accuracy on the IMDB 50K dataset, deployed as a RESTful FastAPI service (POST /predict, GET /health) with a live public Streamlit demo.",
+    image: "/images/projects/sentiment-1.png",
+    tags: ["ML API", "PyTorch · FastAPI"],
+    link: "https://sentimentapi.streamlit.app",
+    year: "2025",
+    // TODO(user): confirm/replace this case-study metadata — invented to fill the template until you correct it
+    projectType: "ML_API_SERVICE",
+    entryYear: "2025",
+    targetPlatform: "WEB_API",
+    primaryRole: "ML_ENGINEER",
+    technologies: ["PyTorch", "FastAPI", "Bidirectional LSTM", "Streamlit"],
+    colorPalette: ["#ffffff", "#4ade80", "#0a0a0a"],
+    contributions:
+      "Trained and tuned a bidirectional LSTM to 85.3% validation accuracy on the IMDB 50K dataset, then wrapped it as a RESTful FastAPI service with health-check and prediction endpoints, plus a public Streamlit demo for live testing.",
+    // TODO(user): confirm/replace — invented placeholder copy for the Project Walkthrough section
+    challenge:
+      "Most sentiment-analysis demos stop at a notebook accuracy score and never become something another service can actually call. The goal was to take a trained model all the way to a real, documented, publicly reachable API — with health checks, predictable latency, and a way for non-technical reviewers to try it without writing a single line of code.",
+    solution:
+      "Trained a bidirectional LSTM to 85.3% validation accuracy on the IMDB 50K dataset, then wrapped it in a FastAPI service with POST /predict and GET /health endpoints, deployed behind versioned, documented routes. A companion Streamlit app gives anyone a live, no-code way to type text in and see the model's confidence in real time.",
+    media: [
+      { src: "/images/projects/sentiment-1.png", alt: "Sentiment Analysis API — Streamlit demo landing screen" },
+      { src: "/images/projects/sentiment-2.png", alt: "Sentiment Analysis API — positive sentiment result with confidence breakdown" },
+      { src: "/images/projects/sentiment-3.png", alt: "Sentiment Analysis API — negative sentiment result with confidence breakdown" },
     ], // TODO(user): send real screenshots/GIF or short screen-recording of this running
+  },
+  {
+    id: "rag-chatbot-suite",
+    title: "PDF RAG Chatbot",
+    description:
+      "My first hands-on RAG project — a PDF Q&A chatbot (LangChain + HuggingFace) that lets you upload a document and ask questions grounded in its actual content, built alongside a simple Groq-powered chat agent to learn the retrieval-augmented-generation fundamentals end to end.",
+    image: "/images/projects/rag-1.png",
+    tags: ["Learning Project", "LangChain · HuggingFace"],
+    link: "https://github.com/patelmrunal", // TODO(user): link the specific repo(s) for these two apps if you want them separated out
+    year: "2025",
+    // TODO(user): confirm/replace this case-study metadata — invented to fill the template until you correct it
+    projectType: "RAG_LEARNING_PROJECT",
+    entryYear: "2025",
+    targetPlatform: "WEB",
+    primaryRole: "AI_ENGINEER",
+    technologies: ["Python", "LangChain", "HuggingFace", "Groq"],
+    colorPalette: ["#ffffff", "#22d3ee", "#0a0a0a"],
+    contributions:
+      "Built my first end-to-end RAG pipeline — PDF upload, chunking, embedding, and retrieval-grounded Q&A with LangChain and HuggingFace — plus a simple Groq-powered chat agent, both as hands-on learning projects to nail the fundamentals before building the more complex agent systems that followed.",
+    challenge:
+      "This was my first hands-on RAG project — the goal wasn't production polish, it was understanding how retrieval-augmented generation actually works end to end: chunking a document, embedding it, retrieving the relevant pieces, and grounding an LLM's answer in them instead of letting it hallucinate.",
+    solution:
+      "Built a PDF Q&A chatbot (LangChain + HuggingFace) that lets you upload a document and ask natural-language questions grounded in its actual content, plus a separate lightweight chat agent (Groq + Python) to get comfortable with the basic LLM request/response loop before building anything more complex.",
+    media: [
+      { src: "/images/projects/rag-1.png", alt: "PDF RAG Chatbot — upload screen" },
+      { src: "/images/projects/rag-2.png", alt: "My First AI Agent — Groq-powered chat interface" },
+      { src: "/images/projects/rag-3.png", alt: "My First AI Agent — empty chat state" },
+      { src: "/images/projects/rag-4.png", alt: "PDF RAG Chatbot — PDF loaded, ready to answer questions" },
+    ],
   },
 ]; // TODO(user): swap the placeholder gallery images for real screenshots or short screen-recordings per project
 
