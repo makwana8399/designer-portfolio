@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { siteConfig, socialLinks } from "@/content/site";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch for AI automation, AI agent development, or web development work in Surat or remote. Currently open for freelance and full-time offers.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return (

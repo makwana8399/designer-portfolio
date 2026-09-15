@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects } from "@/content/site";
 import { ProjectCaseStudy } from "@/components/sections/ProjectCaseStudy";
@@ -5,6 +6,27 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.id === slug);
+  if (!project) return {};
+
+  return {
+    title: project.title,
+    description: project.description,
+    alternates: { canonical: `/projects/${project.id}` },
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      images: [{ url: project.image }],
+    },
+  };
 }
 
 export default async function ProjectDetailPage({

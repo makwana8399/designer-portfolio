@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, JetBrains_Mono } from "next/font/google";
-import { siteConfig } from "@/content/site";
+import { siteConfig, siteUrl } from "@/content/site";
 import { SettingsProvider } from "@/components/layout/SettingsContext";
 import { SceneCanvas } from "@/components/three/SceneCanvas";
 import { Preloader } from "@/components/layout/Preloader";
@@ -14,6 +14,7 @@ import { GridField } from "@/components/layout/GridField";
 import { SettingsPanel } from "@/components/layout/SettingsPanel";
 import { StatusMarquee } from "@/components/layout/StatusMarquee";
 import { CursorTrail } from "@/components/layout/CursorTrail";
+import { StructuredData } from "@/components/seo/StructuredData";
 import "./globals.css";
 
 // Placeholder typefaces — swap for custom/self-hosted fonts later via
@@ -30,14 +31,51 @@ const headline = Anton({
   weight: "400",
 });
 
+// Keyword-targeted for "AI automation Surat" / "AI system development" /
+// "web development Surat" style freelance searches — see the SEO plan for
+// why these specific phrases and Surat-first framing were chosen.
+const seoTitle = "Mrunal Patel — AI Automation & Web Development in Surat";
+const seoDescription =
+  "Freelance AI engineer based in Surat, Gujarat building AI automation systems, AI agents, WhatsApp/chatbot automation, and web development for businesses — from Meta Ads lead-qualification bots to AI-powered warehouse optimization. Ranked Top 5 of 850+ nationally at Intel's AI for Manufacturing Program. Available for remote and Surat-based projects.";
+
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | ${siteConfig.role}`,
-  description: siteConfig.bio,
-  metadataBase: new URL("https://example.com"), // TODO(user): real domain once deployed
-  openGraph: {
-    title: `${siteConfig.name} | ${siteConfig.role}`,
-    description: siteConfig.bio,
+  title: {
+    default: seoTitle,
+    template: `%s | ${siteConfig.name} — AI Automation, Surat`,
   },
+  description: seoDescription,
+  metadataBase: new URL(siteUrl),
+  keywords: [
+    "AI automation Surat",
+    "AI agent development Surat",
+    "AI system development",
+    "web development Surat",
+    "WhatsApp bot developer",
+    "workflow automation n8n",
+    "freelance AI engineer India",
+  ],
+  authors: [{ name: siteConfig.name, url: siteUrl }],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteUrl,
+    siteName: siteConfig.name,
+    title: seoTitle,
+    description: seoDescription,
+    // TODO(user): add /public/og-image.png (1200x630) once you have a
+    // designed share preview — omitted for now rather than pointing at a
+    // file that doesn't exist yet, which would show a broken image on share.
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seoTitle,
+    description: seoDescription,
+  },
+  // No manual `icons` field — favicon.ico, icon.png, and apple-icon.png in
+  // src/app/ are Next.js's file-based icon convention and get auto-wired
+  // into the page <head> without needing an explicit config here.
 };
 
 export default function RootLayout({
@@ -51,6 +89,7 @@ export default function RootLayout({
       className={`${technical.variable} ${headline.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
+        <StructuredData />
         <SettingsProvider>
           <Preloader />
           <SceneCanvas />

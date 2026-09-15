@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { SkillsGrid } from "@/components/sections/SkillsGrid";
 import { Experience } from "@/components/sections/Experience";
@@ -5,6 +6,13 @@ import { AboutClosingCTA } from "@/components/sections/AboutClosingCTA";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ScrollFrameSequence } from "@/components/ui/ScrollFrameSequence";
 import { siteConfig } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Computer Engineering graduate from Surat, Gujarat (CGPA 7.96) specializing in AI automation, agentic AI systems, and web development. Ranked Top 5 of 850+ nationally at Intel's AI for Manufacturing Program.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (

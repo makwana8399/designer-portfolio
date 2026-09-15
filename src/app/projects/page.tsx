@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { ProjectsList } from "@/components/sections/ProjectsList";
 import { ScrollRail } from "@/components/sections/ScrollRail";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+
+export const metadata: Metadata = {
+  title: "AI Automation & Web Development Projects",
+  description:
+    "Case studies in AI automation, WhatsApp lead-qualification bots, AI-powered warehouse optimization, invoicing systems, and web development — real projects built for clients and for Intel's AI for Manufacturing Program. Based in Surat, Gujarat.",
+  alternates: { canonical: "/projects" },
+};
 
 export default function ProjectsPage() {
   return (

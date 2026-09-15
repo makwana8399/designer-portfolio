@@ -20,6 +20,8 @@ import type {
   ThemeSwatch,
 } from "./types";
 
+export const siteUrl = "https://mrunal.site";
+
 export const siteConfig = {
   name: "Mrunal J. Patel",
   firstName: "Mrunal",
