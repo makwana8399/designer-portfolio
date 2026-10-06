@@ -9,7 +9,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const FRAME_COUNT = 75;
+const FRAME_COUNT = 62;
 const framePath = (i: number) => `/image-frames/ezgif-frame-${String(i).padStart(3, "0")}.jpg`;
 
 // Canvas-based "live photo": scrubs through a pre-rendered frame sequence

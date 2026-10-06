@@ -33,8 +33,7 @@ export function SkillsGrid() {
     <div ref={containerRef}>
       <p className="mb-2 text-sm text-muted">Having more than</p>
       <h2 className="font-display mb-2 text-4xl leading-[0.95] sm:text-6xl">
-        {experienceStat.value}
-        {experienceStat.suffix} YEAR{experienceStat.value === 1 ? "" : "S"} OF
+        1+ YEAR OF
         <br />
         HANDS-ON EXPERIENCE
       </h2>

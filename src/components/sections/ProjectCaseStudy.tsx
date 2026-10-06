@@ -148,17 +148,6 @@ export function ProjectCaseStudy({
               ))}
             </div>
           </div>
-
-          {project.link !== "#" && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-fit items-center gap-2 rounded border border-border px-5 py-2.5 uppercase tracking-[0.15em] text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              Live Site <span aria-hidden>&#8599;</span>
-            </a>
-          )}
         </div>
       </div>
 

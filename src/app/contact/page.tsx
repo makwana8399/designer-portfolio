@@ -39,15 +39,25 @@ export default function ContactPage() {
           {siteConfig.phone}
         </a>
 
-        <div className="w-full max-w-3xl border-t border-border" />
-
-        <a
-          href={siteConfig.resumeUrl}
-          download
-          className="rounded border border-border px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:border-accent hover:text-accent"
-        >
-          Download Resume
-        </a>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href={siteConfig.resumeUrl}
+            download="Harshil_Makwana_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-border px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:border-accent hover:text-accent"
+          >
+            Download Resume
+          </a>
+          <a
+            href={siteConfig.upworkUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-accent/40 bg-accent/10 px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:border-accent hover:bg-accent/20"
+          >
+            Hire on Upwork ↗
+          </a>
+        </div>
 
         <p className="text-xs text-dim">
           © {new Date().getFullYear()} {siteConfig.name.toLowerCase().replace(/\s+/g, "")}.dev

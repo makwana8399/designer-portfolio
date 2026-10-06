@@ -10,7 +10,7 @@ import { siteConfig } from "@/content/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Computer Engineering graduate from Surat, Gujarat (CGPA 7.96) specializing in AI automation, agentic AI systems, and web development. Ranked Top 5 of 850+ nationally at Intel's AI for Manufacturing Program.",
+    "Computer Engineering graduate from Surat, Gujarat (CGPA 8.39) specializing in LLM-powered autonomous agents, RAG pipelines, and generative AI systems across three internships.",
   alternates: { canonical: "/about" },
 };
 

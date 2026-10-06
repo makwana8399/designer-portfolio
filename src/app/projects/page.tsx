@@ -4,9 +4,9 @@ import { ScrollRail } from "@/components/sections/ScrollRail";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "AI Automation & Web Development Projects",
+  title: "AI Automation & Agentic Systems Projects",
   description:
-    "Case studies in AI automation, WhatsApp lead-qualification bots, AI-powered warehouse optimization, invoicing systems, and web development — real projects built for clients and for Intel's AI for Manufacturing Program. Based in Surat, Gujarat.",
+    "Case studies in LLM-powered autonomous agents, full agentic controlled Shopify store, AI-powered video intelligence platform, and autonomous content pipelines. Based in Surat, Gujarat.",
   alternates: { canonical: "/projects" },
 };
 

@@ -5,19 +5,15 @@ This is the checklist of what's still needed.
 
 ## 1. Resume → content — DONE (2026-08-21)
 
-Populated from `Mrunal_Patel_GenAI_Resume.pdf` (copied into
+Populated from `Harshil_Makwana_Resume.pdf` (copied into
 `public/resume.pdf`, linked from the Contact section's "Download Resume"
 button): `siteConfig` (name, role, tagline, bio, email, location, timezone),
 `stats`, `experience[]` (new Experience section added, nav renumbered 01–05),
-`skills[]`, and `projects[]` (RAG Chatbot Suite, Sentiment Analysis API,
-Autonomous Content Agent — pulled from the resume's Key Projects + the
-strongest Experience bullet).
+`skills[]`, and `projects[]`.
 
 **Please verify these two things pulled from the resume:**
-- **LinkedIn handle** — the PDF's text layer reads
-  `linkedin.com/in/mrunallpatel` (double "l") but the rendered page image
-  reads `mrunalpatel` (single "l"). Currently set to the double-"l" version
-  in `src/content/site.ts` — confirm which is correct.
+- **LinkedIn handle** — currently set to `linkedin.com/in/harshil8399`
+  in `src/content/site.ts`.
 - **Availability status** — set to `OPEN_FOR_OFFERS` by default; the resume's
   most recent internship listed runs through Jul 2026, so confirm this still
   reflects where things stand.
@@ -55,13 +51,13 @@ than another blind guess.
   Real images/screenshots can be `.png`/`.jpg`/`.webp`, just update the
   `image` path for each project in `src/content/site.ts`.
 - Favicon — still the default Next.js icon. Send a square logo/mark (or say
-  "just use initials MP") for a custom one.
+  "just use initials HM") for a custom one.
 - OG/social share image — not set up yet.
 
 ## 3. Links & identity
 
-- LinkedIn handle — **needs your confirmation**, see note above
-- GitHub confirmed: `github.com/patelmrunal`
+- LinkedIn confirmed: `linkedin.com/in/harshil8399`
+- GitHub confirmed: `github.com/makwana8399`
 - Upwork / Twitter / other profiles — not on the resume, not added; send URLs
   if you want them in the nav/footer
 - `autonomous-content-agent` project has no public link (client/internal
@@ -69,7 +65,7 @@ than another blind guess.
 - "Dev Labs" nav item currently points at your GitHub profile as a
   placeholder — send a real experiments-page URL if you build one, or say
   "remove it"
-- Phone number from the resume (`+91 91578 99743`) is stored in
+- Phone number from the resume (`+91-7990780309`) is stored in
   `siteConfig.phone` but **not displayed anywhere on the site**. Confirm if
   you want it public (e.g. in Contact) or leave it unused.
 
@@ -98,10 +94,7 @@ Vercel, add a custom domain if you have one.
 
 ## Housekeeping notes (for me / future sessions)
 
-- Project lives at `D:\test\portfolio` — separate from `D:\test` where the
-  original research/report happened.
+- Project lives at `D:\designer-portfolio`.
 - Stack, structure, and full status are tracked in `PLAN.md` in this same folder.
-- `npm run build` and `npm run dev` both verified clean as of the initial
-  scaffold, and again after the resume content pass (2026-08-21).
-- Resume source file: `D:\test\Mrunal_Patel_GenAI_Resume.pdf`, copied to
-  `public/resume.pdf` for the site's download link.
+- `npm run build` and `npm run dev` both verified clean.
+- Resume source file: `public/resume.pdf` for the site's download link.

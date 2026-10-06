@@ -34,9 +34,9 @@ const headline = Anton({
 // Keyword-targeted for "AI automation Surat" / "AI system development" /
 // "web development Surat" style freelance searches — see the SEO plan for
 // why these specific phrases and Surat-first framing were chosen.
-const seoTitle = "Mrunal Patel — AI Automation & Web Development in Surat";
+const seoTitle = "Harshil Makwana — Generative AI & Agentic Systems Engineer in Surat";
 const seoDescription =
-  "Freelance AI engineer based in Surat, Gujarat building AI automation systems, AI agents, WhatsApp/chatbot automation, and web development for businesses — from Meta Ads lead-qualification bots to AI-powered warehouse optimization. Ranked Top 5 of 850+ nationally at Intel's AI for Manufacturing Program. Available for remote and Surat-based projects.";
+  "Computer Engineering graduate based in Surat, Gujarat building LLM-powered autonomous agents, RAG pipelines, and generative AI systems with 1+ year hands-on experience across three internships — shipping 10+ production AI workflows and 5+ live public projects. SAP Code Unnati certified. Available for remote and Surat-based projects.";
 
 export const metadata: Metadata = {
   title: {
