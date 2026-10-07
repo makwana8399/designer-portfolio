@@ -160,3 +160,9 @@ body::before {
 .animate-marquee {
   animation: marquee 22s linear infinite;
 }
+.animate-marquee-slow {
+  animation: marquee 50s linear infinite;
+}
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}

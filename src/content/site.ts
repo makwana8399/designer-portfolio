@@ -185,7 +185,7 @@ export const projects: Project[] = [
     title: "Full Agentic Controlled Shopify Store",
     description:
       "Built a Telegram agent that generates AI model photos for Shopify products, drafts titles, descriptions, pricing and captions, and publishes only after owner approval, using a stateful category-based intake flow with a 24-hour approval gate.",
-    image: "/images/projects/placeholder.svg",
+    image: "/images/projects/project3-6.png",
     tags: ["Agentic AI", "Python · Telegram · Shopify GraphQL · OpenAI"],
     link: "#",
     year: "2026",
@@ -208,17 +208,22 @@ export const projects: Project[] = [
     solution:
       "Engineered an autonomous Telegram bot workflow with a 24-hour approval gate. The system drafts complete product assets with AI model imagery, coordinates independent per-platform state tracking across Shopify and Meta Graph APIs, and enables real-time inventory management directly within Telegram chat.",
     media: [
-      { src: "/images/projects/placeholder.svg", alt: "Full Agentic Controlled Shopify Store — Telegram bot interface" },
-      { src: "/images/projects/placeholder.svg", alt: "Full Agentic Controlled Shopify Store — AI model generation and drafting" },
-      { src: "/images/projects/placeholder.svg", alt: "Full Agentic Controlled Shopify Store — Dual-platform publish tracking" },
+      { src: "/images/projects/project3-1.png", alt: "Rama Chikan Telegram Agent — Product category selection intake" },
+      { src: "/images/projects/project3-2.png", alt: "Telegram Bot — Garment front photo upload" },
+      { src: "/images/projects/project3-3.png", alt: "Telegram Bot — Garment back photo upload" },
+      { src: "/images/projects/project3-4.png", alt: "Telegram Bot — Fabric specifications, sizing, price & pose selection" },
+      { src: "/images/projects/project3-5.png", alt: "Telegram Bot — Autonomous AI model photo generation in progress" },
+      { src: "/images/projects/project3-6.png", alt: "High-resolution AI-generated fashion model photo wearing catalog garment" },
+      { src: "/images/projects/project3-7.png", alt: "Owner approval gate with dual-platform publishing to Shopify & Instagram/Facebook" },
+      { src: "/images/projects/project3-8.png", alt: "Live published Shopify product with direct store link and metadata" },
     ],
   },
   {
     id: "ai-video-intelligence-platform",
-    title: "AI-Powered Video Intelligence Platform",
+    title: "InsightTube — AI Intelligence Platform",
     description:
       "Architected a full-stack LLM + RAG platform over video transcripts with ~90% retrieval accuracy via semantic search, plus automated alerts and new-upload channel monitoring, deployed on Render as a scalable, production-ready service.",
-    image: "/images/projects/placeholder.svg",
+    image: "/images/projects/project2-2.png",
     tags: ["RAG Platform", "FastAPI · PGVector · Celery · Render"],
     link: "#",
     year: "2026",
@@ -243,9 +248,10 @@ export const projects: Project[] = [
     solution:
       "Designed and deployed a FastAPI microservice architecture with Celery async task pipelines and PGVector for sub-second semantic search. Integrated OpenAI LLMs for automated insight generation (summaries, keyword extraction, sentiment, topic detection) and alert pipelines.",
     media: [
-      { src: "/images/projects/placeholder.svg", alt: "AI-Powered Video Intelligence Platform — Semantic search dashboard" },
-      { src: "/images/projects/placeholder.svg", alt: "AI-Powered Video Intelligence Platform — PGVector RAG retrieval" },
-      { src: "/images/projects/placeholder.svg", alt: "AI-Powered Video Intelligence Platform — Automated channel monitoring" },
+      { src: "/images/projects/project2-1.png", alt: "InsightTube — AI Intelligence Platform sign-in & auth portal" },
+      { src: "/images/projects/project2-2.png", alt: "InsightTube — Main YouTube intelligence dashboard & metrics overview" },
+      { src: "/images/projects/project2-3.png", alt: "InsightTube — VidMind conversational RAG Q&A grounded in video sources" },
+      { src: "/images/projects/project2-4.png", alt: "InsightTube — Deep video intelligence with auto-summaries, key insights & transcripts" },
     ],
   },
   {

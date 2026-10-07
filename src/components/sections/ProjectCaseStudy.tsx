@@ -226,7 +226,7 @@ export function ProjectCaseStudy({
           02 // Interactive Gallery
         </p>
         <div className="overflow-hidden">
-          <div className="animate-marquee flex w-max gap-6">
+          <div className="animate-marquee-slow flex w-max gap-6">
             {(() => {
               const galleryMedia = project.media.filter((item) => !item.excludeFromGallery);
               return [...galleryMedia, ...galleryMedia];

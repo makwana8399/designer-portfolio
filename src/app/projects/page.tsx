@@ -6,7 +6,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 export const metadata: Metadata = {
   title: "AI Automation & Agentic Systems Projects",
   description:
-    "Case studies in LLM-powered autonomous agents, full agentic controlled Shopify store, AI-powered video intelligence platform, and autonomous content pipelines. Based in Surat, Gujarat.",
+    "Case studies in LLM-powered autonomous agents, full agentic controlled Shopify store, InsightTube AI intelligence platform, and autonomous content pipelines. Based in Surat, Gujarat.",
   alternates: { canonical: "/projects" },
 };
 
